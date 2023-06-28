@@ -19,6 +19,7 @@ namespace FitnessTrackingApplication.Repository
         public void CreateUser(User user)
         {
             context.Users.Add(user);
+            context.SaveChanges();
         }
 
         public void DeleteUser(User user)
@@ -30,12 +31,15 @@ namespace FitnessTrackingApplication.Repository
         {
             var user = context.Users.FirstOrDefault(x => x.UserName == userName&&x.Password==password);
             User existingUser = new User();
-
-            existingUser.UserId = user.UserId;
-            existingUser.UserName = user.UserName;
-            existingUser.Password = user.Password;
-            existingUser.Email = user.Email;
-            existingUser.Weight = user.Weight;
+            if(user != null)
+            {
+                existingUser.Id = user.Id;
+                existingUser.UserName = user.UserName;
+                existingUser.Password = user.Password;
+                existingUser.Email = user.Email;
+                existingUser.Weight = user.Weight;
+            }
+            
             return existingUser;
         }
 

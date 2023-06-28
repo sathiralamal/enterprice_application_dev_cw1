@@ -33,6 +33,8 @@
             textBox2 = new TextBox();
             buttonLogin = new Button();
             buttonCancel = new Button();
+            messagelable = new Label();
+            createUser = new Button();
             SuspendLayout();
             // 
             // label1
@@ -49,7 +51,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(248, 124);
+            textBox1.Location = new Point(248, 148);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(264, 23);
             textBox1.TabIndex = 1;
@@ -80,11 +82,31 @@
             buttonCancel.Text = "Cancel";
             buttonCancel.UseVisualStyleBackColor = true;
             // 
+            // messagelable
+            // 
+            messagelable.AutoSize = true;
+            messagelable.Location = new Point(351, 93);
+            messagelable.Name = "messagelable";
+            messagelable.Size = new Size(0, 15);
+            messagelable.TabIndex = 5;
+            // 
+            // createUser
+            // 
+            createUser.Location = new Point(308, 346);
+            createUser.Name = "createUser";
+            createUser.Size = new Size(140, 23);
+            createUser.TabIndex = 6;
+            createUser.Text = "Sign In";
+            createUser.UseVisualStyleBackColor = true;
+            createUser.Click += createUser_Click;
+            // 
             // LoginView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(790, 450);
+            Controls.Add(createUser);
+            Controls.Add(messagelable);
             Controls.Add(buttonCancel);
             Controls.Add(buttonLogin);
             Controls.Add(textBox2);
@@ -92,6 +114,7 @@
             Controls.Add(label1);
             Name = "LoginView";
             Text = "LoginView";
+            Load += LoginView_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -103,5 +126,7 @@
         private TextBox textBox2;
         private Button buttonLogin;
         private Button buttonCancel;
+        private Label messagelable;
+        private Button createUser;
     }
 }

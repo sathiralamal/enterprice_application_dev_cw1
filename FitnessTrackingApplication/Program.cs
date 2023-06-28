@@ -1,5 +1,6 @@
 namespace FitnessTrackingApplication
 {
+    using FitnessTrackingApplication.Controller;
     using FitnessTrackingApplication.Views;
     internal static class Program
        
@@ -14,7 +15,8 @@ namespace FitnessTrackingApplication
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new MainView());
+            UserController userControl = UserController.GetInstance();
+            Application.Run(new LoginView(userControl));
         }
     }
 }

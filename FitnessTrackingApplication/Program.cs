@@ -17,7 +17,8 @@ namespace FitnessTrackingApplication
             ApplicationConfiguration.Initialize();
             UserController userControl = UserController.GetInstance();
             // Application.Run(new LoginView(userControl));
-            Application.Run(new ApplicationView());
+            //Application.Run(new ApplicationView());
+            Application.Run(new MainView());
         }
     }
 }

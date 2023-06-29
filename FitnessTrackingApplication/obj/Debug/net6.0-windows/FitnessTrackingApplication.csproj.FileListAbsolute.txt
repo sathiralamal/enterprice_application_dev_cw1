@@ -63,7 +63,6 @@ C:\Users\sathira\Desktop\EAD_CW2\FitnessTrackingApplication\FitnessTrackingAppli
 C:\Users\sathira\Desktop\EAD_CW2\FitnessTrackingApplication\FitnessTrackingApplication\obj\Debug\net6.0-windows\FitnessTrackingApplication.pdb
 C:\Users\sathira\Desktop\EAD_CW2\FitnessTrackingApplication\FitnessTrackingApplication\obj\Debug\net6.0-windows\FitnessTrackingApplication.genruntimeconfig.cache
 C:\Users\sathira\Desktop\EAD_CW2\FitnessTrackingApplication\FitnessTrackingApplication\obj\Debug\net6.0-windows\ref\FitnessTrackingApplication.dll
-C:\Users\sathira\Desktop\EAD_CW2\FitnessTrackingApplication\FitnessTrackingApplication\obj\Debug\net6.0-windows\FitnessTrackingApplication.Views.ApplicationView.resources
 C:\Users\sathira\Desktop\EAD_CW2\FitnessTrackingApplication\FitnessTrackingApplication\obj\Debug\net6.0-windows\FitnessTrackingApplication.Views.LoginView.resources
 C:\Users\sathira\Desktop\EAD_CW2\FitnessTrackingApplication\FitnessTrackingApplication\bin\Debug\net6.0-windows\SQLitePCLRaw.batteries_v2.dll
 C:\Users\sathira\Desktop\EAD_CW2\FitnessTrackingApplication\FitnessTrackingApplication\bin\Debug\net6.0-windows\SQLitePCLRaw.core.dll
@@ -92,3 +91,9 @@ C:\Users\sathira\Desktop\EAD_CW2\FitnessTrackingApplication\FitnessTrackingAppli
 C:\Users\sathira\Desktop\EAD_CW2\FitnessTrackingApplication\FitnessTrackingApplication\bin\Debug\net6.0-windows\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\sathira\Desktop\EAD_CW2\FitnessTrackingApplication\FitnessTrackingApplication\bin\Debug\net6.0-windows\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\sathira\Desktop\EAD_CW2\FitnessTrackingApplication\FitnessTrackingApplication\obj\Debug\net6.0-windows\FitnessTrackingApplication.Views.CreateUserView.resources
+C:\Users\sathira\Desktop\EAD_CW2\FitnessTrackingApplication\FitnessTrackingApplication\obj\Debug\net6.0-windows\FitnessTrackingApplication.Views.SubViews.ExerciseView.resources
+C:\Users\sathira\Desktop\EAD_CW2\FitnessTrackingApplication\FitnessTrackingApplication\obj\Debug\net6.0-windows\FitnessTrackingApplication.Views.SubViews.FoodView.resources
+C:\Users\sathira\Desktop\EAD_CW2\FitnessTrackingApplication\FitnessTrackingApplication\obj\Debug\net6.0-windows\FitnessTrackingApplication.Views.SubViews.MealView.resources
+C:\Users\sathira\Desktop\EAD_CW2\FitnessTrackingApplication\FitnessTrackingApplication\obj\Debug\net6.0-windows\FitnessTrackingApplication.Views.SubViews.RepotView.resources
+C:\Users\sathira\Desktop\EAD_CW2\FitnessTrackingApplication\FitnessTrackingApplication\obj\Debug\net6.0-windows\FitnessTrackingApplication.Views.SubViews.WorkoutView.resources
+C:\Users\sathira\Desktop\EAD_CW2\FitnessTrackingApplication\FitnessTrackingApplication\obj\Debug\net6.0-windows\FitnessTrackingApplication.Views.DashbordView.resources

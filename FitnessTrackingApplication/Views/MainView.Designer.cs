@@ -28,18 +28,120 @@
         /// </summary>
         private void InitializeComponent()
         {
+            panel1 = new Panel();
+            button6 = new Button();
+            button5 = new Button();
+            button4 = new Button();
+            button3 = new Button();
+            button2 = new Button();
+            button1 = new Button();
+            mainPanal = new Panel();
+            panel1.SuspendLayout();
             SuspendLayout();
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(button6);
+            panel1.Controls.Add(button5);
+            panel1.Controls.Add(button4);
+            panel1.Controls.Add(button3);
+            panel1.Controls.Add(button2);
+            panel1.Controls.Add(button1);
+            panel1.Dock = DockStyle.Left;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(143, 503);
+            panel1.TabIndex = 0;
+            // 
+            // button6
+            // 
+            button6.Location = new Point(12, 188);
+            button6.Name = "button6";
+            button6.Size = new Size(128, 28);
+            button6.TabIndex = 5;
+            button6.Text = "Repots";
+            button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
+            // 
+            // button5
+            // 
+            button5.Location = new Point(12, 154);
+            button5.Name = "button5";
+            button5.Size = new Size(128, 28);
+            button5.TabIndex = 4;
+            button5.Text = "WorkOut";
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(12, 120);
+            button4.Name = "button4";
+            button4.Size = new Size(128, 28);
+            button4.TabIndex = 3;
+            button4.Text = "Exersises";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(12, 86);
+            button3.Name = "button3";
+            button3.Size = new Size(128, 28);
+            button3.TabIndex = 2;
+            button3.Text = "Foods";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(12, 51);
+            button2.Name = "button2";
+            button2.Size = new Size(128, 29);
+            button2.TabIndex = 1;
+            button2.Text = "Meals";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(12, 12);
+            button1.Name = "button1";
+            button1.Size = new Size(128, 33);
+            button1.TabIndex = 0;
+            button1.Text = "Dashbord";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // mainPanal
+            // 
+            mainPanal.Location = new Point(149, 0);
+            mainPanal.Name = "mainPanal";
+            mainPanal.Size = new Size(940, 503);
+            mainPanal.TabIndex = 1;
             // 
             // MainView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(883, 503);
+            ClientSize = new Size(1101, 503);
+            Controls.Add(mainPanal);
+            Controls.Add(panel1);
             Name = "MainView";
             Text = "MainView";
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
+
+        private Panel panel1;
+        private Button button5;
+        private Button button4;
+        private Button button3;
+        private Button button2;
+        private Button button1;
+        private Panel mainPanal;
+        private Button button6;
     }
 }

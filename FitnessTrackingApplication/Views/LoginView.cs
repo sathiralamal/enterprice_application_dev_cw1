@@ -32,7 +32,7 @@ namespace FitnessTrackingApplication.Views
             login = this.UserControl.LoginUser(textBox1.Text, textBox2.Text);
             if (login)
             {
-                var app = new ApplicationView();
+                var app = new MainView();
                 app.Show();
                 this.Close();
             }

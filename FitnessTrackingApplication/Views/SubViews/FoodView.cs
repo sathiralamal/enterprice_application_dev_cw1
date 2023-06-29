@@ -11,23 +11,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace FitnessTrackingApplication.Views
+namespace FitnessTrackingApplication.Views.SubViews
 {
-    public partial class ApplicationView : Form
+    public partial class FoodView : Form
     {
         private FoodController foodController;
         private List<Food> Foods;
         private bool isEdit = false;
         private bool operationStatus = false;
 
-        public ApplicationView()
+        public FoodView()
         {
             InitializeComponent();
             foodController = new FoodController();
             this.LoadAllFoods();
-
         }
 
         public void LoadAllFoods()
@@ -37,28 +35,12 @@ namespace FitnessTrackingApplication.Views
         }
 
 
-        private void tabPage2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cancelFoodbtn_Click(object sender, EventArgs e)
+        private void cancelFoodbtn_Click_1(object sender, EventArgs e)
         {
             ClearTextBox();
         }
 
-        private void ClearTextBox()
-        {
-            textBoxFoodName.Text = "";
-            textBoxCalories.Text = "";
-            textBoxAmount.Text = "";
-            textBoxFoodID.Text = "";
-            textBoxFoodID.Visible = false;
-            this.isEdit = false;
-            buttonDelete.Visible = false;
-        }
-
-        private void submitFoodBtn_Click(object sender, EventArgs e)
+        private void submitFoodBtn_Click_1(object sender, EventArgs e)
         {
 
             if (!textBoxFoodName.Text.IsNullOrEmpty() && !textBoxCalories.Text.IsNullOrEmpty() && !textBoxAmount.Text.IsNullOrEmpty())
@@ -90,35 +72,10 @@ namespace FitnessTrackingApplication.Views
             }
         }
 
-        private void ShowMessageBox(string Text, String Title, MessageBoxIcon ICON)
-        {
-            MessageBox.Show(Text, Title,
-                    MessageBoxButtons.OKCancel,
-                    ICON);
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void dataGridViewFoods_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             Console.WriteLine("single click table");
             this.ModifyData();
-        }
-
-        private void ModifyData()
-        {
-            int curretRow = dataGridViewFoods.CurrentRow.Index;
-            var currentFood = Foods.ElementAt(curretRow);
-            textBoxFoodID.Text = currentFood.Id.ToString();
-            textBoxFoodName.Text = currentFood.Name;
-            textBoxCalories.Text = currentFood.calories.ToString();
-            textBoxAmount.Text = currentFood.amount.ToString();
-            isEdit = true;
-            textBoxFoodID.Visible = true;
-            buttonDelete.Visible = true;
         }
 
         private void dataGridViewFoods_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -145,7 +102,7 @@ namespace FitnessTrackingApplication.Views
             {
                 foreach (DataGridViewRow row in dataGridViewFoods.Rows)
                 {
-                    if (row.Cells[1].Value.ToString().Equals(searchValue)|| row.Cells[0].Value.ToString().Equals(searchValue))
+                    if (row.Cells[1].Value.ToString().Equals(searchValue) || row.Cells[0].Value.ToString().Equals(searchValue))
                     {
                         row.Selected = true;
                         break;
@@ -157,5 +114,37 @@ namespace FitnessTrackingApplication.Views
                 MessageBox.Show(exc.Message);
             }
         }
+
+        private void ModifyData()
+        {
+            int curretRow = dataGridViewFoods.CurrentRow.Index;
+            var currentFood = Foods.ElementAt(curretRow);
+            textBoxFoodID.Text = currentFood.Id.ToString();
+            textBoxFoodName.Text = currentFood.Name;
+            textBoxCalories.Text = currentFood.calories.ToString();
+            textBoxAmount.Text = currentFood.amount.ToString();
+            isEdit = true;
+            textBoxFoodID.Visible = true;
+            buttonDelete.Visible = true;
+        }
+
+        private void ClearTextBox()
+        {
+            textBoxFoodName.Text = "";
+            textBoxCalories.Text = "";
+            textBoxAmount.Text = "";
+            textBoxFoodID.Text = "";
+            textBoxFoodID.Visible = false;
+            this.isEdit = false;
+            buttonDelete.Visible = false;
+        }
+
+        private void ShowMessageBox(string Text, String Title, MessageBoxIcon ICON)
+        {
+            MessageBox.Show(Text, Title,
+                    MessageBoxButtons.OKCancel,
+                    ICON);
+        }
+
     }
 }

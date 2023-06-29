@@ -14,5 +14,7 @@ namespace FitnessTrackingApplication.Models
         public List<Food> foods { get; set; } = null!;
         public DateTime dateTime { get; set; }
         public string Name { get; set; } = null!;
+        public float TotalCatories { get; set; }
+        public bool IsRecursive { get; set; }
     }
 }

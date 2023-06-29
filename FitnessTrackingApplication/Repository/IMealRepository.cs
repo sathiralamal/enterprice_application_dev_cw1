@@ -9,9 +9,9 @@ namespace FitnessTrackingApplication.Repository
 {
     public interface IMealRepository
     {
-        List<Meals> GetAll();
+        List<Meal> GetAll();
         Meal GetById(int id);
-        void CreateExersise(Meal meal);
+        void CreateMeals(Meal meal);
         void DeleteById(int id);
         void UpdateById(Meal meal, int id);
     }

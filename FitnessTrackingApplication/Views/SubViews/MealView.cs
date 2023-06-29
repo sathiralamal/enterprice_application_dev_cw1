@@ -16,13 +16,29 @@ namespace FitnessTrackingApplication.Views.SubViews
     public partial class MealView : Form
     {
         FoodController foodController;
+        MealController mealController;
         List<Food> foods;
         List<Food> SelectedFoods;
+        bool isEdit = false;
+        List<Meal> Meals;
 
         public MealView()
         {
             InitializeComponent();
             foodController = new FoodController();
+            mealController = new MealController();
+            this.LoadAllMeal();
+        }
+
+        public void LoadAllMeal()
+        {
+            this.Meals = this.mealController.GetAll();
+            dataGridViewMeal.DataSource = Meals;
+            if (isEdit)
+            {
+                dataGridViewMeal.RefreshEdit();
+            }
+
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -54,24 +70,35 @@ namespace FitnessTrackingApplication.Views.SubViews
 
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
-            if (comboBoxMeal.SelectedItem != null&& listBoxFoods.Items.Count>0)
+            if (comboBoxMeal.SelectedItem != null && listBoxFoods.Items.Count > 0)
             {
                 Meal meal = new Meal();
                 meal.dateTime = dateTimePicker1.Value;
                 meal.Name = (string)comboBoxMeal.SelectedItem;
-                List<Food> selectFoods = new List<Food>(); 
+                meal.IsRecursive = checkBoxRecursive.Checked;
+                List<Food> selectFoods = new List<Food>();
+                int totalCalories = 0;
                 foreach (var item in listBoxFoods.Items)
                 {
-                    selectFoods.Add((Food)item); 
+                    Food temfood = (Food)item;
+                    selectFoods.Add(temfood);
+                    totalCalories = totalCalories + temfood.calories;
                 }
                 meal.foods = selectFoods;
+                meal.TotalCatories = totalCalories;
+
+                if (!isEdit)
+                {
+                    this.mealController.CreateMeal(meal);
+                }
+                this.LoadAllMeal();
 
             }
             else
             {
-                this.ShowMessageBox("Select the Meal name", "Meal Add", MessageBoxIcon.Warning);
+                this.ShowMessageBox("Fill the all madatory filds", "Meal Add", MessageBoxIcon.Warning);
             }
-           
+
         }
 
         private void ShowMessageBox(string Text, String Title, MessageBoxIcon ICON)
@@ -81,5 +108,12 @@ namespace FitnessTrackingApplication.Views.SubViews
                     ICON);
         }
 
+        private void ClearTextBox()
+        {
+            checkBoxRecursive.Checked = false;
+            isEdit = false;
+            buttonDelete.Visible = false;
+            buttonSubmit.Text = "Submit";
+        }
     }
 }

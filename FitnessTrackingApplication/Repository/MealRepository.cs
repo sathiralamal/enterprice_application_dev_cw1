@@ -15,7 +15,7 @@ namespace FitnessTrackingApplication.Repository
             context = new FitnessAppContext();
         }
 
-        public void CreateExersise(Meal meal)
+        public void CreateMeals(Meal meal)
         {
             context.Meals.Add(meal);
             context.SaveChanges();
@@ -53,9 +53,12 @@ namespace FitnessTrackingApplication.Repository
                     result.Name = meal.Name;
                     result.dateTime = meal.dateTime;
                     result.foods = meal.foods;
+                    result.IsRecursive = meal.IsRecursive;
                     db.SaveChanges();
                 }
             }
         }
+
+      
     }
 }

@@ -30,7 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             label1 = new Label();
-            dataGridView1 = new DataGridView();
+            dataGridViewMeal = new DataGridView();
             idDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             dateTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -49,7 +49,8 @@
             buttonSubmit = new Button();
             buttonCancel = new Button();
             buttonDelete = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            checkBoxRecursive = new CheckBox();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewMeal).BeginInit();
             ((System.ComponentModel.ISupportInitialize)mealBindingSource2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)mealBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)mealBindingSource1).BeginInit();
@@ -65,20 +66,20 @@
             label1.TabIndex = 0;
             label1.Text = "Manage Meals";
             // 
-            // dataGridView1
+            // dataGridViewMeal
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, dateTimeDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn });
-            dataGridView1.DataSource = mealBindingSource2;
-            dataGridView1.Location = new Point(22, 107);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(346, 225);
-            dataGridView1.TabIndex = 1;
+            dataGridViewMeal.AllowUserToAddRows = false;
+            dataGridViewMeal.AllowUserToDeleteRows = false;
+            dataGridViewMeal.AutoGenerateColumns = false;
+            dataGridViewMeal.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewMeal.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, dateTimeDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn });
+            dataGridViewMeal.DataSource = mealBindingSource2;
+            dataGridViewMeal.Location = new Point(22, 107);
+            dataGridViewMeal.Name = "dataGridViewMeal";
+            dataGridViewMeal.ReadOnly = true;
+            dataGridViewMeal.RowTemplate.Height = 25;
+            dataGridViewMeal.Size = new Size(346, 225);
+            dataGridViewMeal.TabIndex = 1;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -221,11 +222,22 @@
             buttonDelete.Text = "Delete";
             buttonDelete.UseVisualStyleBackColor = true;
             // 
+            // checkBoxRecursive
+            // 
+            checkBoxRecursive.AutoSize = true;
+            checkBoxRecursive.Location = new Point(689, 138);
+            checkBoxRecursive.Name = "checkBoxRecursive";
+            checkBoxRecursive.Size = new Size(76, 19);
+            checkBoxRecursive.TabIndex = 14;
+            checkBoxRecursive.Text = "Recursive";
+            checkBoxRecursive.UseVisualStyleBackColor = true;
+            // 
             // MealView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(817, 465);
+            Controls.Add(checkBoxRecursive);
             Controls.Add(buttonDelete);
             Controls.Add(buttonCancel);
             Controls.Add(buttonSubmit);
@@ -238,12 +250,12 @@
             Controls.Add(label2);
             Controls.Add(comboBoxMeal);
             Controls.Add(dateTimePicker1);
-            Controls.Add(dataGridView1);
+            Controls.Add(dataGridViewMeal);
             Controls.Add(label1);
             Name = "MealView";
             Text = "MealView";
             Load += MealView_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewMeal).EndInit();
             ((System.ComponentModel.ISupportInitialize)mealBindingSource2).EndInit();
             ((System.ComponentModel.ISupportInitialize)mealBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)mealBindingSource1).EndInit();
@@ -254,7 +266,7 @@
         #endregion
 
         private Label label1;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridViewMeal;
         private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn dateTimeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
@@ -273,5 +285,6 @@
         private Button buttonSubmit;
         private Button buttonCancel;
         private Button buttonDelete;
+        private CheckBox checkBoxRecursive;
     }
 }

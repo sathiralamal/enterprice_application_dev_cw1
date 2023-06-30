@@ -21,6 +21,11 @@ namespace FitnessTrackingApplication.Controller
             return this.mealRepository.GetAll();
         }
 
+        public List<Meal> GetAllMealWithFood()
+        {
+            return mealRepository.GetAllMealWithFood();
+
+        }
         public bool CreateMeal(Meal meal)
         {
             bool status = false;

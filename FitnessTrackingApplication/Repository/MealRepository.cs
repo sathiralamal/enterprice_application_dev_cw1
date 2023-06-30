@@ -1,4 +1,5 @@
 ﻿using FitnessTrackingApplication.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,13 +18,19 @@ namespace FitnessTrackingApplication.Repository
 
         public void CreateMeals(Meal meal)
         {
-            meal.Foods.ForEach(food =>
+            using (var db = new FitnessAppContext())
             {
-                context.Foods.Attach(food);
+                meal.Foods.ForEach(food =>
+            {
+
+                db.Foods.Attach(food);
+
+
             });
 
-            context.Meals.Add(meal);
-            context.SaveChanges();
+                db.Meals.Add(meal);
+                db.SaveChanges();
+            }
         }
 
         public void DeleteById(int id)
@@ -36,6 +43,12 @@ namespace FitnessTrackingApplication.Repository
         public List<Meal> GetAll()
         {
             var meals = context.Meals.ToList();
+            return meals;
+        }
+
+        public List<Meal> GetAllMealWithFood()
+        {
+            var meals = context.Meals.Include(m => m.Foods).ToList();
             return meals;
         }
 

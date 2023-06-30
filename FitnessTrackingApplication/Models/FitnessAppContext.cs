@@ -40,15 +40,15 @@ namespace FitnessTrackingApplication.Models
             //OnModelCreating(modelBuilder);
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-       {
-          optionsBuilder.UseSqlite($"Data Source={DbPath}");
-        }
+      //  protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+      // {
+      //    optionsBuilder.UseSqlite($"Data Source={DbPath}");
+      //  }
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseSqlServer($"Server=tcp:ead-server.database.windows.net,1433;Initial Catalog=EAD_DATABASE_TEST_2023-06-28T07-16Z;Persist Security Info=False;User ID=admin_ead;Password=Anterpri_cw2@2023;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-        //}
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer($"Server=tcp:ead-server.database.windows.net,1433;Initial Catalog=EAD_DATABASE_TEST;Persist Security Info=False;User ID=admin_ead;Password=Anterpri_cw2@2023;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+        }
 
    
 

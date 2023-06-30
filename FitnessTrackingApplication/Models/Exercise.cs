@@ -15,6 +15,6 @@ namespace FitnessTrackingApplication.Models
         public string ExerciseName { get; set; } = null!;
         public string? ExerciseDescription { get; set; }
         public float Calories { get; set; }
-        public ICollection<Workout> Workouts { get; set; } 
+        public List<Workout> Workouts { get; set; } 
     }
 }

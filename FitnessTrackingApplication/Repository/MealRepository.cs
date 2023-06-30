@@ -17,6 +17,11 @@ namespace FitnessTrackingApplication.Repository
 
         public void CreateMeals(Meal meal)
         {
+            meal.Foods.ForEach(food =>
+            {
+                context.Foods.Attach(food);
+            });
+
             context.Meals.Add(meal);
             context.SaveChanges();
         }

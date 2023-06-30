@@ -12,7 +12,7 @@ namespace FitnessTrackingApplication.Models
         [Key]
         public int Id { get; set; }
         public float TotalCalories { get; set;}
-        public ICollection<Exercise> Exercises { get; set; }
+        public List<Exercise> Exercises { get; set; }
 
     }
 }

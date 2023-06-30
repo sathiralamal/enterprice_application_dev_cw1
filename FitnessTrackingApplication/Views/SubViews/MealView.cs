@@ -84,7 +84,7 @@ namespace FitnessTrackingApplication.Views.SubViews
                     selectFoods.Add(temfood);
                     totalCalories = totalCalories + temfood.calories;
                 }
-               // meal.Foods = selectFoods;
+                meal.Foods = selectFoods;
                 meal.TotalCatories = totalCalories;
 
                 if (!isEdit)
@@ -92,7 +92,7 @@ namespace FitnessTrackingApplication.Views.SubViews
                     this.mealController.CreateMeal(meal);
                 }
                 this.LoadAllMeal();
-
+                this.ClearTextBox();
             }
             else
             {
@@ -114,6 +114,8 @@ namespace FitnessTrackingApplication.Views.SubViews
             isEdit = false;
             buttonDelete.Visible = false;
             buttonSubmit.Text = "Submit";
+            listBoxFoods.ClearSelected();
+            listBoxFoods.Items.Clear();
         }
     }
 }

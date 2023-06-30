@@ -15,6 +15,6 @@ namespace FitnessTrackingApplication.Models
         public string Name { get; set; } = null!;
         public float TotalCatories { get; set; }
         public bool IsRecursive { get; set; }
-        public ICollection<Food> Foods { get; }
+        public List<Food> Foods { get; set; }
     }
 }

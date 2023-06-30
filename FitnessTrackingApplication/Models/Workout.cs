@@ -9,9 +9,10 @@ namespace FitnessTrackingApplication.Models
 {
     public class Workout
     {
-        
+        [Key]
         public int Id { get; set; }
-       public List<Exercise> exercises { get; set; } = null!;
         public float TotalCalories { get; set;}
+        public ICollection<Exercise> Exercises { get; set; }
+
     }
 }

@@ -52,7 +52,7 @@ namespace FitnessTrackingApplication.Repository
                     result.Id = id;
                     result.Name = meal.Name;
                     result.dateTime = meal.dateTime;
-                    result.foods = meal.foods;
+                    //result.Foods = meal.Foods;
                     result.IsRecursive = meal.IsRecursive;
                     db.SaveChanges();
                 }

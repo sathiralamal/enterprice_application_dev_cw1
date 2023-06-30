@@ -14,5 +14,6 @@ namespace FitnessTrackingApplication.Models
         public string Name { get; set; } = null!;
         public int calories { get; set; }
         public float amount { get; set; }
+        public ICollection<Meal> Meals { get; } 
     }
 }

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 
 namespace FitnessTrackingApplication.Models
@@ -12,11 +11,11 @@ namespace FitnessTrackingApplication.Models
     public class FitnessAppContext : DbContext
     {
         public string DbPath { get; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<Food> Foods { get;set; }
-        public DbSet<Exercise> Exercises { get; set; }
-        public DbSet<Meal> Meals { get; set; }
-        public DbSet<Workout> Workouts { get; set; }
+        public DbSet<User> Users { get; set; } = null!;
+        public DbSet<Food> Foods { get; set; } = null!;
+        public DbSet<Exercise> Exercises { get; set; } = null!;
+        public DbSet<Meal> Meals { get; set; } = null!;
+        public DbSet<Workout> Workouts { get; set; } = null!;
 
 
         public FitnessAppContext()
@@ -26,7 +25,22 @@ namespace FitnessTrackingApplication.Models
             DbPath = System.IO.Path.Join(path, "fitnessapp1.db");
         }
 
-       protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+           modelBuilder.Entity<Food>()
+                .HasMany(x => x.Meals)
+                .WithMany(x => x.Foods)
+                .UsingEntity(j=>j.ToTable("FoodMeal"));
+
+           modelBuilder.Entity<Exercise>()
+               .HasMany(x => x.Workouts)
+               .WithMany(x=> x.Exercises)
+               .UsingEntity(j => j.ToTable("ExercisesWorkout"));
+
+            //OnModelCreating(modelBuilder);
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
        {
           optionsBuilder.UseSqlite($"Data Source={DbPath}");
         }

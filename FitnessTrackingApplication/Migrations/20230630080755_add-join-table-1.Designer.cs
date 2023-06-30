@@ -3,6 +3,7 @@ using System;
 using FitnessTrackingApplication.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,27 +11,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FitnessTrackingApplication.Migrations
 {
     [DbContext(typeof(FitnessAppContext))]
-    partial class FitnessAppContextModelSnapshot : ModelSnapshot
+    [Migration("20230630080755_add-join-table-1")]
+    partial class addjointable1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.8");
-
-            modelBuilder.Entity("ExerciseWorkout", b =>
-                {
-                    b.Property<int>("ExercisesId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("WorkoutsId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("ExercisesId", "WorkoutsId");
-
-                    b.HasIndex("WorkoutsId");
-
-                    b.ToTable("ExercisesWorkout", (string)null);
-                });
 
             modelBuilder.Entity("FitnessTrackingApplication.Models.Exercise", b =>
                 {
@@ -136,6 +124,27 @@ namespace FitnessTrackingApplication.Migrations
                     b.ToTable("Workouts");
                 });
 
+            modelBuilder.Entity("FitnessTrackingApplication.Models.WorkoutExercise", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ExerciseId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("WorkoutId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExerciseId");
+
+                    b.HasIndex("WorkoutId");
+
+                    b.ToTable("WorkoutExercise");
+                });
+
             modelBuilder.Entity("FoodMeal", b =>
                 {
                     b.Property<int>("FoodsId")
@@ -148,20 +157,20 @@ namespace FitnessTrackingApplication.Migrations
 
                     b.HasIndex("MealsId");
 
-                    b.ToTable("FoodMeal", (string)null);
+                    b.ToTable("FoodMeal");
                 });
 
-            modelBuilder.Entity("ExerciseWorkout", b =>
+            modelBuilder.Entity("FitnessTrackingApplication.Models.WorkoutExercise", b =>
                 {
                     b.HasOne("FitnessTrackingApplication.Models.Exercise", null)
                         .WithMany()
-                        .HasForeignKey("ExercisesId")
+                        .HasForeignKey("ExerciseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("FitnessTrackingApplication.Models.Workout", null)
                         .WithMany()
-                        .HasForeignKey("WorkoutsId")
+                        .HasForeignKey("WorkoutId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

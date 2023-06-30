@@ -84,7 +84,7 @@ namespace FitnessTrackingApplication.Views.SubViews
                     selectFoods.Add(temfood);
                     totalCalories = totalCalories + temfood.calories;
                 }
-                meal.foods = selectFoods;
+               // meal.Foods = selectFoods;
                 meal.TotalCatories = totalCalories;
 
                 if (!isEdit)

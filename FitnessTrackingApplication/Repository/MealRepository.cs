@@ -22,10 +22,7 @@ namespace FitnessTrackingApplication.Repository
             {
                 meal.Foods.ForEach(food =>
             {
-
                 db.Foods.Attach(food);
-
-
             });
 
                 db.Meals.Add(meal);

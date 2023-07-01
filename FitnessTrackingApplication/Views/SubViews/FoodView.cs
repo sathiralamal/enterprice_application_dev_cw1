@@ -105,6 +105,7 @@ namespace FitnessTrackingApplication.Views.SubViews
                     if (row.Cells[1].Value.ToString().Equals(searchValue) || row.Cells[0].Value.ToString().Equals(searchValue))
                     {
                         row.Selected = true;
+                        textBoxSearch.Text = "";
                         break;
                     }
                 }

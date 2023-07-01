@@ -31,7 +31,7 @@ namespace FitnessTrackingApplication.Views.SubViews
 
         public void LoadAllExersises()
         {
-            Exercises = exerciseController.GetFoods();
+            Exercises = exerciseController.GetExersise();
             dataGridViewExe.DataSource = Exercises;
             if (isEdit)
             {

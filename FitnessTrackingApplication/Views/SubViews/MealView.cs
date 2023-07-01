@@ -152,6 +152,8 @@ namespace FitnessTrackingApplication.Views.SubViews
             addFoodBtn.Enabled = true;
             textBoxID.Visible = false;
             buttonDelete.Visible = false;
+            buttonSubmit.Visible = true;
+
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -192,6 +194,7 @@ namespace FitnessTrackingApplication.Views.SubViews
             isEdit = true;
             textBoxID.Visible = true;
             buttonDelete.Visible = true;
+            buttonSubmit.Visible = false;
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
@@ -204,6 +207,37 @@ namespace FitnessTrackingApplication.Views.SubViews
             this.ShowMessageBox("Delete the recode", "Meal Add", MessageBoxIcon.Information);
             LoadAllMealWithFood();
             ClearTextBox();
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            string searchValue = textBoxSearch.Text;
+
+            dataGridViewMeal.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            try
+            {
+                foreach (DataGridViewRow row in dataGridViewMeal.Rows)
+                {
+                    if (row.Cells[1].Value.ToString().Equals(searchValue) ||
+                        row.Cells[0].Value.ToString().Equals(searchValue) ||
+                        row.Cells[2].Value.ToString().Equals(searchValue) ||
+                        row.Cells[3].Value.ToString().Equals(searchValue))
+                    {
+                        row.Selected = true;
+                        textBoxSearch.Text = "";
+                        break;
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
+
+        private void listBoxFoods_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

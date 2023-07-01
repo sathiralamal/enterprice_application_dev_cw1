@@ -44,6 +44,8 @@
             buttonDelete = new Button();
             checkBoxRecursive = new CheckBox();
             textBoxID = new TextBox();
+            textBoxSearch = new TextBox();
+            buttonSearch = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewMeal).BeginInit();
             SuspendLayout();
             // 
@@ -121,6 +123,7 @@
             listBoxFoods.Name = "listBoxFoods";
             listBoxFoods.Size = new Size(213, 64);
             listBoxFoods.TabIndex = 7;
+            listBoxFoods.SelectedIndexChanged += listBoxFoods_SelectedIndexChanged;
             // 
             // addFoodBtn
             // 
@@ -201,11 +204,30 @@
             textBoxID.TabIndex = 15;
             textBoxID.Visible = false;
             // 
+            // textBoxSearch
+            // 
+            textBoxSearch.Location = new Point(25, 75);
+            textBoxSearch.Name = "textBoxSearch";
+            textBoxSearch.Size = new Size(475, 23);
+            textBoxSearch.TabIndex = 16;
+            // 
+            // buttonSearch
+            // 
+            buttonSearch.Location = new Point(515, 75);
+            buttonSearch.Name = "buttonSearch";
+            buttonSearch.Size = new Size(75, 23);
+            buttonSearch.TabIndex = 17;
+            buttonSearch.Text = "Search";
+            buttonSearch.UseVisualStyleBackColor = true;
+            buttonSearch.Click += buttonSearch_Click;
+            // 
             // MealView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(945, 465);
+            Controls.Add(buttonSearch);
+            Controls.Add(textBoxSearch);
             Controls.Add(textBoxID);
             Controls.Add(checkBoxRecursive);
             Controls.Add(buttonDelete);
@@ -248,5 +270,7 @@
         private Button buttonDelete;
         private CheckBox checkBoxRecursive;
         private TextBox textBoxID;
+        private TextBox textBoxSearch;
+        private Button buttonSearch;
     }
 }

@@ -8,26 +8,35 @@ using System.Threading.Tasks;
 
 namespace FitnessTrackingApplication.Controller
 {
-    public class ExerciseController
+    public class WorkoutController
     {
-        private IExerciseRepository exerciseRepository;
-
-        public ExerciseController()
+        private IWorkoutRepository workoutRepository;
+        
+        public WorkoutController()
         {
-            this.exerciseRepository = new ExerciseRepository();
+            this.workoutRepository = new WorkoutRepository();
         }
 
-        public List<Exercise> GetExersise()
+        public List<Workout> GetAllWorkOut()
         {
-            return this.exerciseRepository.GetAll();
+            List<Workout> allWorkouts = null; ;
+            try
+            {
+                allWorkouts = this.workoutRepository.GetAllWorkOut();
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return allWorkouts;
         }
 
-        public bool Create(Exercise exercise)
+        public bool CreateWorkout(Workout workout)
         {
             bool status = false;
             try
             {
-                this.exerciseRepository.CreateExersise(exercise);
+                this.workoutRepository.CreateWorkout(workout);
                 status = true;
             }
             catch (Exception ex)
@@ -38,12 +47,12 @@ namespace FitnessTrackingApplication.Controller
             return status;
         }
 
-        public bool Update(Exercise food, int id)
+        public bool Update(Workout workout, int id)
         {
             bool status = false;
             try
             {
-                this.exerciseRepository.UpdateById(food, id);
+                this.workoutRepository.UpdateById(workout, id);
                 status = true;
             }
             catch (Exception ex)
@@ -59,7 +68,7 @@ namespace FitnessTrackingApplication.Controller
             bool status = false;
             try
             {
-                this.exerciseRepository.DeleteById(id);
+                this.workoutRepository.DeleteById(id);
                 status = true;
             }
             catch (Exception ex)
@@ -69,5 +78,6 @@ namespace FitnessTrackingApplication.Controller
             }
             return status;
         }
+
     }
 }

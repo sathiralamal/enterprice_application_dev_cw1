@@ -140,6 +140,7 @@
             buttonDelete.TabIndex = 9;
             buttonDelete.Text = "Delete";
             buttonDelete.UseVisualStyleBackColor = true;
+            buttonDelete.Visible = false;
             buttonDelete.Click += buttonDelete_Click;
             // 
             // dataGridViewExe

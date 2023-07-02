@@ -97,3 +97,5 @@ C:\Users\sathira\Desktop\EAD_CW2\FitnessTrackingApplication\FitnessTrackingAppli
 C:\Users\sathira\Desktop\EAD_CW2\FitnessTrackingApplication\FitnessTrackingApplication\obj\Debug\net6.0-windows\FitnessTrackingApplication.Views.SubViews.RepotView.resources
 C:\Users\sathira\Desktop\EAD_CW2\FitnessTrackingApplication\FitnessTrackingApplication\obj\Debug\net6.0-windows\FitnessTrackingApplication.Views.SubViews.WorkoutView.resources
 C:\Users\sathira\Desktop\EAD_CW2\FitnessTrackingApplication\FitnessTrackingApplication\obj\Debug\net6.0-windows\FitnessTrackingApplication.Views.DashbordView.resources
+C:\Users\sathira\Desktop\EAD_CW2\FitnessTrackingApplication\FitnessTrackingApplication\bin\Debug\net6.0-windows\BouncyCastle.Crypto.dll
+C:\Users\sathira\Desktop\EAD_CW2\FitnessTrackingApplication\FitnessTrackingApplication\bin\Debug\net6.0-windows\itextsharp.dll

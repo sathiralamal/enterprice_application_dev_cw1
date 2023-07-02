@@ -33,7 +33,6 @@
             label1 = new Label();
             label2 = new Label();
             comboBoxExesice = new ComboBox();
-            textBoxTime = new TextBox();
             buttonExeAdd = new Button();
             labelTotalCalories = new Label();
             label3 = new Label();
@@ -45,8 +44,7 @@
             checkBoxRecursive = new CheckBox();
             dataGridViewWorkouts = new DataGridView();
             label4 = new Label();
-            label5 = new Label();
-            textBoxTotalCal = new TextBox();
+            dateTimePicker1 = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)dataGridViewWorkouts).BeginInit();
             SuspendLayout();
             // 
@@ -59,7 +57,7 @@
             // 
             // buttonSearch
             // 
-            buttonSearch.Location = new Point(513, 74);
+            buttonSearch.Location = new Point(513, 69);
             buttonSearch.Name = "buttonSearch";
             buttonSearch.Size = new Size(87, 23);
             buttonSearch.TabIndex = 1;
@@ -83,30 +81,23 @@
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label2.Location = new Point(638, 76);
             label2.Name = "label2";
-            label2.Size = new Size(115, 21);
+            label2.Size = new Size(120, 21);
             label2.TabIndex = 4;
-            label2.Text = "Mofiy Wokouts";
+            label2.Text = "Create Wokouts";
             // 
             // comboBoxExesice
             // 
             comboBoxExesice.FormattingEnabled = true;
             comboBoxExesice.Location = new Point(644, 149);
             comboBoxExesice.Name = "comboBoxExesice";
-            comboBoxExesice.Size = new Size(128, 23);
+            comboBoxExesice.Size = new Size(213, 23);
             comboBoxExesice.TabIndex = 5;
-            // 
-            // textBoxTime
-            // 
-            textBoxTime.Location = new Point(778, 149);
-            textBoxTime.Name = "textBoxTime";
-            textBoxTime.Size = new Size(81, 23);
-            textBoxTime.TabIndex = 6;
             // 
             // buttonExeAdd
             // 
             buttonExeAdd.Location = new Point(644, 178);
             buttonExeAdd.Name = "buttonExeAdd";
-            buttonExeAdd.Size = new Size(128, 23);
+            buttonExeAdd.Size = new Size(213, 23);
             buttonExeAdd.TabIndex = 7;
             buttonExeAdd.Text = "Add Exersise";
             buttonExeAdd.UseVisualStyleBackColor = true;
@@ -170,7 +161,7 @@
             listBoxExesise.ItemHeight = 15;
             listBoxExesise.Location = new Point(644, 207);
             listBoxExesise.Name = "listBoxExesise";
-            listBoxExesise.Size = new Size(215, 64);
+            listBoxExesise.Size = new Size(215, 49);
             listBoxExesise.TabIndex = 14;
             listBoxExesise.SelectedIndexChanged += listBoxExesise_SelectedIndexChanged;
             // 
@@ -210,34 +201,23 @@
             label4.AutoSize = true;
             label4.Location = new Point(644, 130);
             label4.Name = "label4";
-            label4.Size = new Size(48, 15);
+            label4.Size = new Size(52, 15);
             label4.TabIndex = 18;
-            label4.Text = "Exersise";
+            label4.Text = "Exercise ";
             // 
-            // label5
+            // dateTimePicker1
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(781, 128);
-            label5.Name = "label5";
-            label5.Size = new Size(37, 15);
-            label5.TabIndex = 19;
-            label5.Text = "hours";
-            // 
-            // textBoxTotalCal
-            // 
-            textBoxTotalCal.Location = new Point(778, 178);
-            textBoxTotalCal.Name = "textBoxTotalCal";
-            textBoxTotalCal.Size = new Size(81, 23);
-            textBoxTotalCal.TabIndex = 20;
-            textBoxTotalCal.Visible = false;
+            dateTimePicker1.Location = new Point(644, 262);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(213, 23);
+            dateTimePicker1.TabIndex = 19;
             // 
             // WorkoutView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(935, 450);
-            Controls.Add(textBoxTotalCal);
-            Controls.Add(label5);
+            Controls.Add(dateTimePicker1);
             Controls.Add(label4);
             Controls.Add(dataGridViewWorkouts);
             Controls.Add(checkBoxRecursive);
@@ -249,7 +229,6 @@
             Controls.Add(label3);
             Controls.Add(labelTotalCalories);
             Controls.Add(buttonExeAdd);
-            Controls.Add(textBoxTime);
             Controls.Add(comboBoxExesice);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -270,7 +249,6 @@
         private Label label1;
         private Label label2;
         private ComboBox comboBoxExesice;
-        private TextBox textBoxTime;
         private Button buttonExeAdd;
         private Label labelTotalCalories;
         private Label label3;
@@ -282,7 +260,6 @@
         private CheckBox checkBoxRecursive;
         private DataGridView dataGridViewWorkouts;
         private Label label4;
-        private Label label5;
-        private TextBox textBoxTotalCal;
+        private DateTimePicker dateTimePicker1;
     }
 }

@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace FitnessTrackingApplication.Views.SubViews
 {
@@ -21,8 +22,12 @@ namespace FitnessTrackingApplication.Views.SubViews
 
         private List<Workout> Workouts;
         private List<Exercise> exercises;
-        private List<Exercise> addedExercises;
+        private List<Exercise> selectedExercises;
         private List<int> exersieTime;
+        private Workout currentSelectedWorkout;
+
+        private List<Exercise> currentExercises;
+
 
         private bool isEdit = false;
 
@@ -32,7 +37,7 @@ namespace FitnessTrackingApplication.Views.SubViews
             this.exerciseController = new ExerciseController();
             this.workoutController = new WorkoutController();
 
-            this.addedExercises = new List<Exercise>();
+            this.selectedExercises = new List<Exercise>();
             this.exersieTime = new List<int>();
         }
 
@@ -59,14 +64,26 @@ namespace FitnessTrackingApplication.Views.SubViews
 
         private void buttonExeAdd_Click(object sender, EventArgs e)
         {
-            if (comboBoxExesice.SelectedItem != null && !textBoxTime.Text.IsNullOrEmpty())
+            if (comboBoxExesice.SelectedItem != null)
             {
-                int hours = int.Parse(textBoxTime.Text.ToString());
 
-                var selectedExesiseId = comboBoxExesice.SelectedItem;
-                this.addedExercises.Add((Exercise)selectedExesiseId);
-                this.exersieTime.Add(hours);
-                listBoxExesise.Items.Add(comboBoxExesice.SelectedItem);
+                var selectedExesise = comboBoxExesice.SelectedItem;
+
+                if (listBoxExesise.Items.Count > 0 && isEdit)
+                {   //Edite existing workout
+                    currentExercises.Add((Exercise)selectedExesise);
+                    listBoxExesise.DataSource = null;
+                    listBoxExesise.DataSource = currentExercises;
+                    listBoxExesise.DisplayMember = "ExerciseName";
+
+                }
+                else
+                {
+                    //Add new workout
+                    listBoxExesise.Items.Add(comboBoxExesice.SelectedItem);
+                    selectedExercises.Add((Exercise)comboBoxExesice.SelectedItem);
+                }
+
                 CountTotalCalories();
 
             }
@@ -79,32 +96,59 @@ namespace FitnessTrackingApplication.Views.SubViews
 
         private void ClearExersise()
         {
+            isEdit = false;
             comboBoxExesice.SelectedIndex = 0;
+            listBoxExesise.DataSource = null;
             listBoxExesise.Items.Clear();
-            addedExercises.Clear();
+            selectedExercises.Clear();
             exersieTime.Clear();
             labelTotalCalories.Text = "0";
             checkBoxRecursive.Checked = false;
+
+
         }
 
         private void CountTotalCalories()
         {
             float totalCalories = 0;
-
-            if (this.addedExercises.Count > 0)
+            if (!isEdit)
             {
-                for (int i = 0; i < this.addedExercises.Count; i++)
+                if (this.selectedExercises.Count > 0)
                 {
-                    totalCalories = totalCalories + this.addedExercises.ElementAt(i).Calories * exersieTime.ElementAt(i);
+                    for (int i = 0; i < this.selectedExercises.Count; i++)
+                    {
+
+                        totalCalories = totalCalories + this.selectedExercises.ElementAt(i).Calories;
+                        labelTotalCalories.Text = totalCalories.ToString();
+
+                    }
+                }
+                else
+                {
                     labelTotalCalories.Text = totalCalories.ToString();
                 }
             }
             else
             {
-                labelTotalCalories.Text = "0";
+                if (this.currentExercises.Count > 0)
+                {
+                    for (int i = 0; i < this.currentExercises.Count; i++)
+                    {
+
+
+                        totalCalories = totalCalories + this.currentExercises.ElementAt(i).Calories;
+                        labelTotalCalories.Text = totalCalories.ToString();
+
+
+                    }
+                }
+                else
+                {
+                    labelTotalCalories.Text = totalCalories.ToString();
+                }
             }
 
-            textBoxTime.Text = "";
+
         }
 
         private void listViewExesise_SelectedIndexChanged(object sender, EventArgs e)
@@ -114,11 +158,19 @@ namespace FitnessTrackingApplication.Views.SubViews
 
         private void listBoxExesise_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var selectedExersis = listBoxExesise.SelectedItem;
-            if (selectedExersis != null )
+            //var selectedExersis = listBoxExesise.SelectedItem;
+            // if (selectedExersis != null)
+            // {
+            //     listBoxExesise.Items.Remove(selectedExersis);
+
+            // }
+        }
+
+        private void listBoxExesise_DoubleClick(object sender, EventArgs e)
+        {
+            if (listBoxExesise.SelectedIndex != -1)
             {
-                listBoxExesise.Items.Remove(selectedExersis);
-               
+                listBoxExesise.Items.RemoveAt(listBoxExesise.SelectedIndex);
             }
         }
 
@@ -141,20 +193,22 @@ namespace FitnessTrackingApplication.Views.SubViews
                 Workout workout = new Workout();
                 workout.Exercises = userExsersice;
                 workout.IsRecursive = checkBoxRecursive.Checked;
+                workout.dateTime = dateTimePicker1.Value;
+                workout.TotalCalories = int.Parse(labelTotalCalories.Text.ToString());
+
                 if (!isEdit)
                 {
-                    workout.TotalCalories = int.Parse(labelTotalCalories.Text.ToString());
                     workoutController.CreateWorkout(workout);
                 }
                 else
                 {
-                    workout.TotalCalories = int.Parse(textBoxTotalCal.Text.ToString());
                     int currentID = int.Parse(textBoxID.Text);
                     workoutController.Update(workout, currentID);
 
                 }
 
                 this.LoadAllWorkouts();
+                ClearTextField();
             }
         }
 
@@ -165,6 +219,7 @@ namespace FitnessTrackingApplication.Views.SubViews
             dt.Columns.Add("Id");
             dt.Columns.Add("Exersises");
             dt.Columns.Add("TotalCalories");
+            dt.Columns.Add("dateTime");
             dt.Columns.Add("Frequent");
 
             if (this.Workouts.Count > 0)
@@ -177,17 +232,18 @@ namespace FitnessTrackingApplication.Views.SubViews
                     {
                         exerciselist += e.ExerciseName + " ,";
                     });
-                    dt.Rows.Add(temp_workout.Id, exerciselist, temp_workout.TotalCalories, temp_workout.IsRecursive ? "Recursive" : "One-Off");
+                    dt.Rows.Add(temp_workout.Id, exerciselist, temp_workout.TotalCalories, temp_workout.dateTime, temp_workout.IsRecursive ? "Recursive" : "One-Off");
 
                 }
             }
 
             dataGridViewWorkouts.DataSource = dt;
-            ;
+
         }
 
         private void ClearTextField()
         {
+
             buttonDelete.Visible = false;
             textBoxID.Text = string.Empty;
             textBoxID.Visible = false;
@@ -201,30 +257,48 @@ namespace FitnessTrackingApplication.Views.SubViews
 
         private void ModifyData()
         {
-            int curretRow = dataGridViewWorkouts.CurrentRow.Index;
-            var currentWorkout = this.Workouts.ElementAt(curretRow);
             isEdit = true;
-            buttonDelete.Visible = true;
+
+            int curretRow = dataGridViewWorkouts.CurrentRow.Index;
+            currentSelectedWorkout = this.Workouts.ElementAt(curretRow);
 
             textBoxID.Text = this.Workouts.ElementAt(curretRow).Id.ToString();
-            listBoxExesise.Items.Clear();
+            textBoxID.Visible = true;
+            listBoxExesise.DataSource = null;
 
-            if (currentWorkout.Exercises.Count > 0)
+            if (currentSelectedWorkout.Exercises.Count > 0)
             {
-               listBoxExesise.DataSource = currentWorkout.Exercises;
+                if (currentExercises != null)
+                {
+                    currentExercises.Clear();
+
+                }
+                currentExercises = currentSelectedWorkout.Exercises;
+                listBoxExesise.DataSource = currentExercises;
+                // currentExercises.ForEach(w =>
+                // {
+                //     listBoxExesise.Items.Add(w);
+                // });
+                listBoxExesise.DisplayMember = "ExerciseName";
             }
 
-            if (currentWorkout.IsRecursive)
+            if (currentSelectedWorkout.IsRecursive)
             {
                 checkBoxRecursive.Checked = true;
             }
-            textBoxTotalCal.Visible = true;
-            textBoxTotalCal.Text = currentWorkout.TotalCalories.ToString();
+            if (currentSelectedWorkout.dateTime != null)
+            {
+                dateTimePicker1.Value = (DateTime)currentSelectedWorkout.dateTime;
 
-            comboBoxExesice.Enabled = false;
-            buttonDelete.Visible = false;
-            buttonAddWokout.Text = "Update";
-            buttonAddWokout.Visible = true;
+            }
+
+
+            comboBoxExesice.Enabled = true;
+            buttonDelete.Visible = true;
+            // buttonAddWokout.Text = "Update";
+
+            //can't update recode
+            buttonAddWokout.Visible = false;
 
         }
 
@@ -265,6 +339,7 @@ namespace FitnessTrackingApplication.Views.SubViews
             int selectedID = int.Parse(textBoxID.Text);
             this.workoutController.Delete(selectedID);
             LoadAllWorkouts();
+            ClearTextField();
         }
     }
 }

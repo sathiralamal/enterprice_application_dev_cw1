@@ -56,9 +56,12 @@ namespace FitnessTrackingApplication.Repository
 
             using (var db = new FitnessAppContext())
             {
+                // var result = db.Workouts.AsNoTracking().SingleOrDefault(b => b.Id == id);
                 var result = db.Workouts.SingleOrDefault(b => b.Id == id);
                 if (result != null)
                 {
+                    db.ChangeTracker.Entries<Workout>().Where(e => e.Entity.Id == id).Single().State = EntityState.Detached;
+                    
                     result.Id = id;
                     result.Exercises = workout.Exercises;
                     result.TotalCalories = workout.TotalCalories;

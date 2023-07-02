@@ -12,8 +12,10 @@ namespace FitnessTrackingApplication.Models
         [Key]
         public int Id { get; set; }
         public float TotalCalories { get; set;}
-        public List<Exercise> Exercises { get; set; }
+        public List<Exercise>? Exercises { get; set; }
         public bool IsRecursive { get; set; }
+        public DateTime? dateTime { get; set; }
+
 
     }
 }

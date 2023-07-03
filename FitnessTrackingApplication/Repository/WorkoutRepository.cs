@@ -50,6 +50,44 @@ namespace FitnessTrackingApplication.Repository
             return workout;
         }
 
+        public List<Workout> GetLastMonthWorkout()
+        {
+            // Get the current date and time
+            DateTime now = DateTime.Now;
+            // Get the first day of the current month
+            DateTime firstDay = new DateTime(now.Year, now.Month, 1);
+            // Get the first day of the previous month
+            DateTime previousFirstDay = firstDay.AddMonths(-1);
+            // Create a DbContext instance
+            using (var context = new FitnessAppContext())
+            {
+                // Query the database for workouts between the previous and current first days
+                var workouts = context.Workouts
+                    .Include(w => w.Exercises) // Include the Exercises navigation property
+                    .Where(w => w.dateTime >= previousFirstDay && w.dateTime < firstDay)
+                    .ToList();
+                // Return the result
+                return workouts;
+            }
+        }
+
+        public List<Workout> GetLastWeekWorkout()
+        {
+             
+            DateTime now = DateTime.Now;
+            DateTime lastSunday = now.AddDays(-(int)now.DayOfWeek);
+            DateTime previousSunday = lastSunday.AddDays(-7);
+            using (var context = new FitnessAppContext())
+            {
+                var workouts = context.Workouts
+                    .Include(w => w.Exercises) // Include the Exercises navigation property
+                    .Where(w => w.dateTime >= previousSunday && w.dateTime < lastSunday)
+                    .ToList();
+                // Return the result
+                return workouts;
+            }
+        }
+
         public void UpdateById(Workout workout, int id)
         {
             workout.Id = id;

@@ -79,5 +79,34 @@ namespace FitnessTrackingApplication.Controller
             return status;
         }
 
+        public List<Workout> GetAllLastWeek()
+        {
+            List<Workout> allWorkouts = null; ;
+            try
+            {
+                allWorkouts = this.workoutRepository.GetLastWeekWorkout();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return allWorkouts;
+        }
+
+        public List<Workout> GetAllLastMonth()
+        {
+            List<Workout> allWorkouts = null; ;
+            try
+            {
+                allWorkouts = this.workoutRepository.GetLastMonthWorkout();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return allWorkouts;
+        }
     }
 }

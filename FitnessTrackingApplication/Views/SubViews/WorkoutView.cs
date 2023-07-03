@@ -34,6 +34,7 @@ namespace FitnessTrackingApplication.Views.SubViews
         public WorkoutView()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.None;
             this.exerciseController = new ExerciseController();
             this.workoutController = new WorkoutController();
 

@@ -16,6 +16,7 @@ namespace FitnessTrackingApplication.Views
         public DashbordView()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.None;
         }
 
         private void DashbordView_Load(object sender, EventArgs e)

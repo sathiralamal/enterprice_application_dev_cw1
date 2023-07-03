@@ -24,6 +24,7 @@ namespace FitnessTrackingApplication.Views.SubViews
         public FoodView()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.None;
             foodController = new FoodController();
             this.LoadAllFoods();
         }

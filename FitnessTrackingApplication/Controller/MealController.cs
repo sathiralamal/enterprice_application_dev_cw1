@@ -23,7 +23,7 @@ namespace FitnessTrackingApplication.Controller
 
         public List<Meal> GetAllMealWithFood()
         {
-            return mealRepository.GetAllMealWithFood();
+            return mealRepository.GetLastWeekMealWithFood();
 
         }
         public bool CreateMeal(Meal meal)
@@ -76,6 +76,14 @@ namespace FitnessTrackingApplication.Controller
             return status;
         }
 
+        public List<Meal> GetLastWeekMealWithFood()
+        {
+            return mealRepository.GetLastWeekMealWithFood();
+        }
 
+        public List<Meal> GetLastMonthMealWithFood()
+        {
+            return mealRepository.GetLastMonthMealWithFood(); 
+        }
     }
 }

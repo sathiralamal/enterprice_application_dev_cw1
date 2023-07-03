@@ -10,6 +10,10 @@ namespace FitnessTrackingApplication.Repository
     public interface IWorkoutRepository
     {
         List<Workout> GetAllWorkOut();
+
+        List<Workout> GetLastWeekWorkout();
+
+        List<Workout> GetLastMonthWorkout();
         Workout GetById(int id);
         void CreateWorkout(Workout workout);
         void DeleteById(int id);

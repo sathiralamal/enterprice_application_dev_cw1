@@ -14,6 +14,7 @@ namespace FitnessTrackingApplication.Repository
         void CreateMeals(Meal meal);
         void DeleteById(int id);
         void UpdateById(Meal meal, int id);
-        List<Meal> GetAllMealWithFood();
+        List<Meal> GetLastWeekMealWithFood();
+        List<Meal> GetLastMonthMealWithFood();
     }
 }

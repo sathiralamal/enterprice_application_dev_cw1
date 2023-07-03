@@ -34,7 +34,7 @@ namespace FitnessTrackingApplication.Views
             textBoxName.Text = "";
             textBoxEmail.Text = "";
             textBoxPassword.Text = "";
-            textBoxWeight.Text = "";
+            
         }
 
         private void buttonCreate_Click(object sender, EventArgs e)
@@ -42,7 +42,7 @@ namespace FitnessTrackingApplication.Views
             string userName = textBoxName.Text;
             string password = textBoxPassword.Text;
             string email = textBoxEmail.Text;
-            string weight = textBoxWeight.Text;
+            string weight = "0";
 
             if (!userName.IsNullOrEmpty() && !password.IsNullOrEmpty() && !email.IsNullOrEmpty() && !weight.IsNullOrEmpty())
             {
@@ -50,27 +50,33 @@ namespace FitnessTrackingApplication.Views
                 user.UserName = userName;
                 user.Password = password;
                 user.Email = email;
-                user.Weight = float.Parse(weight, CultureInfo.InvariantCulture.NumberFormat);
+                user.Weight = 0;
                 try
                 {
                     userController.CreateUser(user);
-                    messageBox.Text = "creating user";
-                    messageBox.BackColor = Color.Green;
-                    messageBox.Visible = true;
+
+                    UserController userControl = new UserController();
+                    LoginView loginView = new LoginView(userControl);
+                    loginView.Activate();
+                    loginView.Show();
+
+                    this.Close();
                 }
-                catch(Exception ex)
+
+                catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                 }
             }
             else
             {
-                messageBox.Text = "Error in creating user";
-                messageBox.BackColor = Color.Red;
-                messageBox.Visible = true;
+
             }
         }
 
-      
+        private void CreateUserView_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

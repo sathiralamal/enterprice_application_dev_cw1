@@ -1,5 +1,6 @@
 ﻿using FitnessTrackingApplication.Controller;
 using FitnessTrackingApplication.Models;
+using FitnessTrackingApplication.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -41,7 +42,7 @@ namespace FitnessTrackingApplication.Views.SubViews
             bool Status = false;
             string weight = textBoxWeight.Text;
             DateTime dateTime = dateTimePicker1.Value;
-            string userName = "sathira";
+            string userName = LoginInfor.UserID;
 
             UserWeaight userWeaight = new UserWeaight();
             userWeaight.UserName = userName;

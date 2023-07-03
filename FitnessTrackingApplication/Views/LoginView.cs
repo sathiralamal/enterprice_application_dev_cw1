@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FitnessTrackingApplication.Controller;
+using FitnessTrackingApplication.Utils;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace FitnessTrackingApplication.Views
 {
@@ -28,13 +30,17 @@ namespace FitnessTrackingApplication.Views
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            bool login = false;
+            string login = "";
             login = this.UserControl.LoginUser(textBox1.Text, textBox2.Text);
-            if (login)
+            if (login.Length > 0)
             {
+                LoginInfor.UserID = login;
+
                 var app = new MainView();
                 app.Show();
-                this.Close();
+                app.Activate();
+                this.Visible = false;
+                
             }
             else
             {
@@ -49,12 +55,22 @@ namespace FitnessTrackingApplication.Views
             CreateUserView createUserView = new CreateUserView(UserController.GetInstance());
             createUserView.Activate();
             createUserView.Show();
+
+            this.Visible = false;
+            this.Hide();
+            
         }
 
         private void LoginView_Load(object sender, EventArgs e)
         {
             messagelable.Text = "";
             messagelable.Visible = false;
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            textBox2.Text = "";
         }
     }
 }

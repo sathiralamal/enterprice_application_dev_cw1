@@ -18,6 +18,7 @@ namespace FitnessTrackingApplication.Views
         {
             InitializeComponent();
             ShowForm("Dashbord");
+
         }
 
         public void ShowForm(string name)

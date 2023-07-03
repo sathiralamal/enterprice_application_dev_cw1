@@ -42,6 +42,7 @@
             // 
             // panel1
             // 
+            panel1.BackColor = Color.FromArgb(192, 255, 192);
             panel1.Controls.Add(buttonUserWeight);
             panel1.Controls.Add(button6);
             panel1.Controls.Add(button5);
@@ -117,12 +118,13 @@
             // 
             // button1
             // 
+            button1.BackColor = SystemColors.ButtonHighlight;
             button1.Location = new Point(12, 12);
             button1.Name = "button1";
             button1.Size = new Size(128, 33);
             button1.TabIndex = 0;
             button1.Text = "Dashbord";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // mainPanal
@@ -140,7 +142,7 @@
             Controls.Add(mainPanal);
             Controls.Add(panel1);
             Name = "MainView";
-            Text = "MainView";
+            Text = "Fitness Application";
             panel1.ResumeLayout(false);
             ResumeLayout(false);
         }

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FitnessTrackingApplication.Models;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using FitnessTrackingApplication.Views;
 
 namespace FitnessTrackingApplication.Controller
 {
@@ -19,16 +20,16 @@ namespace FitnessTrackingApplication.Controller
             this.userRepository = new UserRepository(new FitnessAppContext());
         }
 
-        public bool LoginUser(string username, string password)
+        public string LoginUser(string username, string password)
         {
-            bool login = true;
+            string login = "";
 
             User user = this.userRepository.GetUser(username, password);
-            if (user.Id == null)
+            if (user.UserName!= null)
             {
-                login = false;
+                login = user.UserName;
             }
-            return true;
+            return login;
         }
 
         public bool CreateUser(User user) {
@@ -44,6 +45,9 @@ namespace FitnessTrackingApplication.Controller
             try
             {
                 this.userRepository.CreateUser(user);
+                
+
+
             }catch (Exception ex)
             {   
                 isSuccss = false;

@@ -35,15 +35,18 @@
             buttonCancel = new Button();
             messagelable = new Label();
             createUser = new Button();
+            label2 = new Label();
+            label3 = new Label();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.InactiveCaptionText;
-            label1.Location = new Point(320, 46);
+            label1.Location = new Point(289, 53);
             label1.Name = "label1";
-            label1.Size = new Size(107, 15);
+            label1.Size = new Size(192, 28);
             label1.TabIndex = 0;
             label1.Text = "Fitness Application";
             label1.TextAlign = ContentAlignment.TopCenter;
@@ -51,23 +54,23 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(248, 148);
+            textBox1.Location = new Point(248, 141);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(264, 23);
             textBox1.TabIndex = 1;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(251, 177);
+            textBox2.Location = new Point(248, 186);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(261, 23);
             textBox2.TabIndex = 2;
             // 
             // buttonLogin
             // 
-            buttonLogin.Location = new Point(248, 236);
+            buttonLogin.Location = new Point(248, 225);
             buttonLogin.Name = "buttonLogin";
-            buttonLogin.Size = new Size(264, 23);
+            buttonLogin.Size = new Size(264, 34);
             buttonLogin.TabIndex = 3;
             buttonLogin.Text = "Login";
             buttonLogin.UseVisualStyleBackColor = true;
@@ -77,10 +80,11 @@
             // 
             buttonCancel.Location = new Point(248, 265);
             buttonCancel.Name = "buttonCancel";
-            buttonCancel.Size = new Size(264, 23);
+            buttonCancel.Size = new Size(264, 33);
             buttonCancel.TabIndex = 4;
             buttonCancel.Text = "Cancel";
             buttonCancel.UseVisualStyleBackColor = true;
+            buttonCancel.Click += buttonCancel_Click;
             // 
             // messagelable
             // 
@@ -100,11 +104,31 @@
             createUser.UseVisualStyleBackColor = true;
             createUser.Click += createUser_Click;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(249, 118);
+            label2.Name = "label2";
+            label2.Size = new Size(65, 15);
+            label2.TabIndex = 7;
+            label2.Text = "User Name";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(250, 168);
+            label3.Name = "label3";
+            label3.Size = new Size(57, 15);
+            label3.TabIndex = 8;
+            label3.Text = "Password";
+            // 
             // LoginView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(790, 450);
+            Controls.Add(label3);
+            Controls.Add(label2);
             Controls.Add(createUser);
             Controls.Add(messagelable);
             Controls.Add(buttonCancel);
@@ -128,5 +152,7 @@
         private Button buttonCancel;
         private Label messagelable;
         private Button createUser;
+        private Label label2;
+        private Label label3;
     }
 }

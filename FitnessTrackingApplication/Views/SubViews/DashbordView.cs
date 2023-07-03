@@ -49,9 +49,26 @@ namespace FitnessTrackingApplication.Views
             LastWeekWorkout = workoutController.GetAllLastWeek();
             LastMonthkWorkout = workoutController.GetAllLastMonth();
 
-            
 
 
+        }
+
+        private void ShowPrediction()
+        {
+            if (TotalBurnCalories > TotalEatCalories)
+            {
+                labelPredictionTex.Text = "You have burn more calories , than calories gain yor weight loose";
+            }
+
+            if (TotalBurnCalories < TotalEatCalories)
+            {
+                labelPredictionTex.Text = "Your weight goes up when you consume more calories than you use";
+            }
+            if (TotalEatCalories == TotalBurnCalories)
+            {
+                labelPredictionTex.Text = "Your maintain current weight";
+            }
+            labelPredictionTex.Visible = true;
         }
 
         private double[] getMealTotalCaloryList(List<Meal> meals)
@@ -74,7 +91,6 @@ namespace FitnessTrackingApplication.Views
             return caloryList.ToArray();
         }
 
-
         private void DashbordView_Load(object sender, EventArgs e)
         {
             double[] dataMeal1 = getMealTotalCaloryList(LastMonthMeal);
@@ -82,9 +98,10 @@ namespace FitnessTrackingApplication.Views
 
             ShowLineChart1(dataMeal1, dataWorkouts);
             ShowPiChart1(LastMonthMeal, LastMonthkWorkout);
+
+            ShowPrediction();
+
         }
-
-
 
         private void ShowLineChart1(double[] data1, double[] data2)
         {
@@ -110,7 +127,6 @@ namespace FitnessTrackingApplication.Views
             };
         }
 
-
         private void ShowPiChart1(List<Meal> meatData, List<Workout> workoutsData)
         {
             meatData.ForEach(m =>
@@ -126,14 +142,16 @@ namespace FitnessTrackingApplication.Views
 
             pieChart1.Series = new List<ISeries>
              {
-                 new PieSeries<double>
-                  {
-                       Values = new List<double> { 2 },
-                       Pushout = 8,
-                       Stroke = new SolidColorPaint(SKColors.Red)
-                    },
-                new PieSeries<double> { Values = new List<double> { TotalBurnCalories } },
-                new PieSeries<double> { Values = new List<double> { TotalEatCalories } }
+
+                new PieSeries<double> {
+                    Values = new List<double> { TotalBurnCalories },
+                    Name ="Total Calories Burn"
+
+                },
+                new PieSeries<double> {
+                    Values = new List<double> { TotalEatCalories } ,
+                    Name ="Total Calories Gain"
+                }
 
                };
         }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            buttonUserWeight = new Button();
             button6 = new Button();
             button5 = new Button();
             button4 = new Button();
@@ -41,6 +42,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(buttonUserWeight);
             panel1.Controls.Add(button6);
             panel1.Controls.Add(button5);
             panel1.Controls.Add(button4);
@@ -52,6 +54,16 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(143, 503);
             panel1.TabIndex = 0;
+            // 
+            // buttonUserWeight
+            // 
+            buttonUserWeight.Location = new Point(12, 222);
+            buttonUserWeight.Name = "buttonUserWeight";
+            buttonUserWeight.Size = new Size(128, 29);
+            buttonUserWeight.TabIndex = 6;
+            buttonUserWeight.Text = "User Log";
+            buttonUserWeight.UseVisualStyleBackColor = true;
+            buttonUserWeight.Click += buttonUserWeight_Click;
             // 
             // button6
             // 
@@ -143,5 +155,6 @@
         private Button button1;
         private Panel mainPanal;
         private Button button6;
+        private Button buttonUserWeight;
     }
 }

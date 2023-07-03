@@ -25,6 +25,9 @@
     <Compile Update="Views\SubViews\RepotView.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Views\SubViews\UserView.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Views\SubViews\WorkoutView.cs">
       <SubType>Form</SubType>
     </Compile>

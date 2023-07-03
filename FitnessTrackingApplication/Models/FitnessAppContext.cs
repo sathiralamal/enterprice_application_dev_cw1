@@ -16,6 +16,8 @@ namespace FitnessTrackingApplication.Models
         public DbSet<Exercise> Exercises { get; set; } = null!;
         public DbSet<Meal> Meals { get; set; } = null!;
         public DbSet<Workout> Workouts { get; set; } = null!;
+        public DbSet<UserWeaight> UserWeaights { get; set; } = null!;
+
 
 
         public FitnessAppContext()

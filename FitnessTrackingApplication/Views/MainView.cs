@@ -17,6 +17,7 @@ namespace FitnessTrackingApplication.Views
         public MainView()
         {
             InitializeComponent();
+            ShowForm("Dashbord");
         }
 
         public void ShowForm(string name)
@@ -76,6 +77,15 @@ namespace FitnessTrackingApplication.Views
                 repotsForm.Show();
                 mainPanal.Controls.Add(repotsForm);
             }
+            else if (name == "User_logs")
+            {
+                mainPanal.Controls.Clear();
+                mainPanal.Visible = true;
+                UserView userForm = new UserView();
+                userForm.TopLevel = false;
+                userForm.Show();
+                mainPanal.Controls.Add(userForm);
+            }
 
 
         }
@@ -110,6 +120,11 @@ namespace FitnessTrackingApplication.Views
         {
             this.ShowForm("Repots");
 
+        }
+
+        private void buttonUserWeight_Click(object sender, EventArgs e)
+        {
+            this.ShowForm("User_logs");
         }
     }
 }

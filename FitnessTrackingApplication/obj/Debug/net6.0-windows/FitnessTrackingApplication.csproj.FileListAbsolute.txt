@@ -120,3 +120,5 @@ C:\Users\sathira\Desktop\EAD_CW2\FitnessTrackingApplication\FitnessTrackingAppli
 C:\Users\sathira\Desktop\EAD_CW2\FitnessTrackingApplication\FitnessTrackingApplication\bin\Debug\net6.0-windows\runtimes\win-arm64\native\libSkiaSharp.dll
 C:\Users\sathira\Desktop\EAD_CW2\FitnessTrackingApplication\FitnessTrackingApplication\bin\Debug\net6.0-windows\runtimes\win-x64\native\libSkiaSharp.dll
 C:\Users\sathira\Desktop\EAD_CW2\FitnessTrackingApplication\FitnessTrackingApplication\bin\Debug\net6.0-windows\runtimes\win-x86\native\libSkiaSharp.dll
+C:\Users\sathira\Desktop\EAD_CW2\FitnessTrackingApplication\FitnessTrackingApplication\obj\Debug\net6.0-windows\FitnessTrackingApplication.Views.SubViews.UserView.resources
+C:\Users\sathira\Desktop\EAD_CW2\FitnessTrackingApplication\FitnessTrackingApplication\obj\Debug\net6.0-windows\FitnessTrackingApplication.Properties.Resources.resources

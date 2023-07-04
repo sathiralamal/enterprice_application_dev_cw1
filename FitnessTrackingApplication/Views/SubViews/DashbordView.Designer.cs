@@ -34,13 +34,15 @@
             pieChart1 = new LiveChartsCore.SkiaSharpView.WinForms.PieChart();
             labelPrediction = new Label();
             labelPredictionTex = new Label();
+            cartesianChartpred = new LiveChartsCore.SkiaSharpView.WinForms.CartesianChart();
+            label3 = new Label();
             SuspendLayout();
             // 
             // cartesianChart1
             // 
             cartesianChart1.Location = new Point(55, 95);
             cartesianChart1.Name = "cartesianChart1";
-            cartesianChart1.Size = new Size(384, 196);
+            cartesianChart1.Size = new Size(325, 158);
             cartesianChart1.TabIndex = 0;
             // 
             // label1
@@ -57,20 +59,20 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(494, 40);
+            label2.Location = new Point(492, 280);
             label2.Name = "label2";
-            label2.Size = new Size(150, 25);
+            label2.Size = new Size(253, 25);
             label2.TabIndex = 3;
-            label2.Text = "Workout Details";
+            label2.Text = "Workout / Meal Comparison";
             // 
             // pieChart1
             // 
             pieChart1.InitialRotation = 0D;
             pieChart1.IsClockwise = true;
-            pieChart1.Location = new Point(494, 81);
+            pieChart1.Location = new Point(527, 316);
             pieChart1.MaxAngle = 360D;
             pieChart1.Name = "pieChart1";
-            pieChart1.Size = new Size(281, 235);
+            pieChart1.Size = new Size(166, 172);
             pieChart1.TabIndex = 4;
             pieChart1.Total = null;
             pieChart1.Load += pieChart1_Load;
@@ -79,7 +81,7 @@
             // 
             labelPrediction.AutoSize = true;
             labelPrediction.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point);
-            labelPrediction.Location = new Point(78, 318);
+            labelPrediction.Location = new Point(55, 280);
             labelPrediction.Name = "labelPrediction";
             labelPrediction.Size = new Size(99, 25);
             labelPrediction.TabIndex = 5;
@@ -88,20 +90,39 @@
             // labelPredictionTex
             // 
             labelPredictionTex.AutoSize = true;
-            labelPredictionTex.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            labelPredictionTex.Font = new Font("Segoe UI", 10F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             labelPredictionTex.ForeColor = Color.IndianRed;
-            labelPredictionTex.Location = new Point(87, 362);
+            labelPredictionTex.Location = new Point(55, 316);
             labelPredictionTex.Name = "labelPredictionTex";
-            labelPredictionTex.Size = new Size(55, 21);
+            labelPredictionTex.Size = new Size(48, 19);
             labelPredictionTex.TabIndex = 6;
             labelPredictionTex.Text = "label3";
             labelPredictionTex.Visible = false;
+            // 
+            // cartesianChartpred
+            // 
+            cartesianChartpred.Location = new Point(492, 68);
+            cartesianChartpred.Name = "cartesianChartpred";
+            cartesianChartpred.Size = new Size(350, 188);
+            cartesianChartpred.TabIndex = 7;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(492, 40);
+            label3.Name = "label3";
+            label3.Size = new Size(171, 25);
+            label3.TabIndex = 8;
+            label3.Text = "Weight  prediction";
             // 
             // DashbordView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(927, 494);
+            Controls.Add(label3);
+            Controls.Add(cartesianChartpred);
             Controls.Add(labelPredictionTex);
             Controls.Add(labelPrediction);
             Controls.Add(pieChart1);
@@ -123,5 +144,7 @@
         private LiveChartsCore.SkiaSharpView.WinForms.PieChart pieChart1;
         private Label labelPrediction;
         private Label labelPredictionTex;
+        private LiveChartsCore.SkiaSharpView.WinForms.CartesianChart cartesianChartpred;
+        private Label label3;
     }
 }

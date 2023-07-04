@@ -23,6 +23,7 @@ namespace FitnessTrackingApplication.Views
         WorkoutController workoutController;
         MealController mealController;
         UserController userControl;
+        UserWeightController weightController;
         User user;
 
         List<Meal> LastWeekMeal;
@@ -30,6 +31,10 @@ namespace FitnessTrackingApplication.Views
 
         List<Workout> LastWeekWorkout;
         List<Workout> LastMonthkWorkout;
+
+        List<UserWeaight> UserWeaights;
+
+
 
         double TotalBurnCalories = 0;
         double TotalEatCalories = 0;
@@ -42,6 +47,7 @@ namespace FitnessTrackingApplication.Views
             workoutController = new WorkoutController();
             mealController = new MealController();
             userControl = new UserController();
+            weightController = new UserWeightController();
 
             LastMonthMeal = mealController.GetLastMonthMealWithFood();
             LastWeekMeal = mealController.GetLastWeekMealWithFood();
@@ -49,8 +55,49 @@ namespace FitnessTrackingApplication.Views
             LastWeekWorkout = workoutController.GetAllLastWeek();
             LastMonthkWorkout = workoutController.GetAllLastMonth();
 
+            UserWeaights = weightController.GetUserWeight();
 
 
+        }
+
+        private void GenerateWeightPrediction()
+        {
+            if (UserWeaights.Count > 0)
+            {
+                List<double> actualWeight = new List<double>();
+                List<double> PredictionWeight = new List<double>();
+
+                UserWeaights.ForEach(w =>
+                {
+                    actualWeight.Add(w.Weight);
+                });
+
+                int time_duration = 7;
+
+                double ration = (TotalEatCalories - TotalBurnCalories) / (time_duration * 15);
+                UserWeaight latest = UserWeaights.OrderByDescending(u => u.dateTime).First();
+                double latestWeight = latest.Weight;
+
+
+                for (int i = 0; i < 7; i++)
+                {
+                    latestWeight = latestWeight + ration;
+                    PredictionWeight.Add(latestWeight);
+                }
+
+                cartesianChartpred.Series = new ISeries[]
+          {
+                new LineSeries<double>
+                {
+                    Values = PredictionWeight.ToArray(),
+                    Stroke = new SolidColorPaint(SKColors.OrangeRed) { StrokeThickness = 2 },
+                    Fill = null,
+                    Name = "Prediction Weight for next week",
+
+                },
+
+          };
+            }
         }
 
         private void ShowPrediction()
@@ -100,6 +147,8 @@ namespace FitnessTrackingApplication.Views
             ShowPiChart1(LastMonthMeal, LastMonthkWorkout);
 
             ShowPrediction();
+
+            GenerateWeightPrediction();
 
         }
 

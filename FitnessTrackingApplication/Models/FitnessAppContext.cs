@@ -24,7 +24,7 @@ namespace FitnessTrackingApplication.Models
         {
             var folder = Environment.SpecialFolder.LocalApplicationData;
             var path = Environment.GetFolderPath(folder);
-            DbPath = System.IO.Path.Join(path, "fitnessapp1.db");
+            DbPath = System.IO.Path.Join(path, "fitnesstrackerdb.db");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -42,15 +42,15 @@ namespace FitnessTrackingApplication.Models
             //OnModelCreating(modelBuilder);
         }
 
-      //  protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-      // {
-      //    optionsBuilder.UseSqlite($"Data Source={DbPath}");
-      //  }
+      protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+      {
+          optionsBuilder.UseSqlite($"Data Source={DbPath}");
+      }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer($"Server=tcp:ead-server.database.windows.net,1433;Initial Catalog=EAD_DATABASE_TEST;Persist Security Info=False;User ID=admin_ead;Password=Anterpri_cw2@2023;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer($"Server=tcp:ead-server.database.windows.net,1433;Initial Catalog=EAD_DATABASE_TEST;Persist Security Info=False;User ID=admin_ead;Password=Anterpri_cw2@2023;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+       // }
 
    
 

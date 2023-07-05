@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FitnessTrackingApplication.Migrations
 {
     /// <inheritdoc />
-    public partial class addazuremigration1 : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,11 +15,11 @@ namespace FitnessTrackingApplication.Migrations
                 name: "Exercises",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ExerciseName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ExerciseDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Calories = table.Column<float>(type: "real", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ExerciseName = table.Column<string>(type: "TEXT", nullable: false),
+                    ExerciseDescription = table.Column<string>(type: "TEXT", nullable: true),
+                    Calories = table.Column<float>(type: "REAL", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -30,11 +30,11 @@ namespace FitnessTrackingApplication.Migrations
                 name: "Foods",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    calories = table.Column<int>(type: "int", nullable: false),
-                    amount = table.Column<float>(type: "real", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    calories = table.Column<int>(type: "INTEGER", nullable: false),
+                    amount = table.Column<float>(type: "REAL", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -45,12 +45,12 @@ namespace FitnessTrackingApplication.Migrations
                 name: "Meals",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    dateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TotalCatories = table.Column<float>(type: "real", nullable: false),
-                    IsRecursive = table.Column<bool>(type: "bit", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    dateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    TotalCatories = table.Column<float>(type: "REAL", nullable: false),
+                    IsRecursive = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -61,12 +61,12 @@ namespace FitnessTrackingApplication.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Weight = table.Column<float>(type: "real", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    UserName = table.Column<string>(type: "TEXT", nullable: false),
+                    Password = table.Column<string>(type: "TEXT", nullable: true),
+                    Email = table.Column<string>(type: "TEXT", nullable: true),
+                    Weight = table.Column<float>(type: "REAL", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -74,12 +74,29 @@ namespace FitnessTrackingApplication.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "UserWeaights",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    UserName = table.Column<string>(type: "TEXT", nullable: true),
+                    Weight = table.Column<double>(type: "REAL", nullable: false),
+                    dateTime = table.Column<DateTime>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserWeaights", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Workouts",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    TotalCalories = table.Column<float>(type: "real", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    TotalCalories = table.Column<float>(type: "REAL", nullable: false),
+                    IsRecursive = table.Column<bool>(type: "INTEGER", nullable: false),
+                    dateTime = table.Column<DateTime>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -90,8 +107,8 @@ namespace FitnessTrackingApplication.Migrations
                 name: "FoodMeal",
                 columns: table => new
                 {
-                    FoodsId = table.Column<int>(type: "int", nullable: false),
-                    MealsId = table.Column<int>(type: "int", nullable: false)
+                    FoodsId = table.Column<int>(type: "INTEGER", nullable: false),
+                    MealsId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -114,8 +131,8 @@ namespace FitnessTrackingApplication.Migrations
                 name: "ExercisesWorkout",
                 columns: table => new
                 {
-                    ExercisesId = table.Column<int>(type: "int", nullable: false),
-                    WorkoutsId = table.Column<int>(type: "int", nullable: false)
+                    ExercisesId = table.Column<int>(type: "INTEGER", nullable: false),
+                    WorkoutsId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -156,6 +173,9 @@ namespace FitnessTrackingApplication.Migrations
 
             migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "UserWeaights");
 
             migrationBuilder.DropTable(
                 name: "Exercises");

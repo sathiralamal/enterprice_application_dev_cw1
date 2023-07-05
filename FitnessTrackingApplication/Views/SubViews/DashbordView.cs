@@ -32,6 +32,9 @@ namespace FitnessTrackingApplication.Views
         List<Workout> LastWeekWorkout;
         List<Workout> LastMonthkWorkout;
 
+        List<Meal> AllMeal;
+        List<Workout> AllWorkout;
+
         List<UserWeaight> UserWeaights;
 
 
@@ -54,6 +57,9 @@ namespace FitnessTrackingApplication.Views
 
             LastWeekWorkout = workoutController.GetAllLastWeek();
             LastMonthkWorkout = workoutController.GetAllLastMonth();
+
+            AllMeal = mealController.GetAll();
+            AllWorkout = workoutController.GetAllWorkOut();
 
             UserWeaights = weightController.GetUserWeight();
 
@@ -102,6 +108,16 @@ namespace FitnessTrackingApplication.Views
 
         private void ShowPrediction()
         {
+            AllMeal.ForEach(m =>
+            {
+                TotalEatCalories = TotalEatCalories + m.TotalCatories;
+            });
+
+            AllWorkout.ForEach(w =>
+            {
+                TotalBurnCalories = TotalBurnCalories + w.TotalCalories;
+            });
+
             if (TotalBurnCalories > TotalEatCalories)
             {
                 labelPredictionTex.Text = "You have burn more calories , than calories gain yor weight loose";
@@ -140,11 +156,12 @@ namespace FitnessTrackingApplication.Views
 
         private void DashbordView_Load(object sender, EventArgs e)
         {
-            double[] dataMeal1 = getMealTotalCaloryList(LastMonthMeal);
-            double[] dataWorkouts = getWorkoutTotalCaloryList(LastMonthkWorkout);
+            double[] dataMeal1 = getMealTotalCaloryList(AllMeal);
+            double[] dataWorkouts = getWorkoutTotalCaloryList(AllWorkout);
 
             ShowLineChart1(dataMeal1, dataWorkouts);
-            ShowPiChart1(LastMonthMeal, LastMonthkWorkout);
+            this.ShowPiChart1(LastMonthMeal, LastMonthkWorkout);
+            this.ShowPiChart2(AllMeal, AllWorkout);
 
             ShowPrediction();
 
@@ -178,14 +195,16 @@ namespace FitnessTrackingApplication.Views
 
         private void ShowPiChart1(List<Meal> meatData, List<Workout> workoutsData)
         {
+            double TotalEatCaloriesMonth = 0;
+            double TotalBurnCaloriesMonth = 0;
             meatData.ForEach(m =>
             {
-                TotalEatCalories = TotalEatCalories + m.TotalCatories;
+                TotalEatCaloriesMonth = TotalEatCaloriesMonth + m.TotalCatories;
             });
 
             workoutsData.ForEach(m =>
             {
-                TotalBurnCalories = TotalBurnCalories + m.TotalCalories;
+                TotalBurnCaloriesMonth = TotalBurnCaloriesMonth + m.TotalCalories;
             });
 
 
@@ -193,12 +212,43 @@ namespace FitnessTrackingApplication.Views
              {
 
                 new PieSeries<double> {
-                    Values = new List<double> { TotalBurnCalories },
+                    Values = new List<double> { TotalEatCaloriesMonth },
                     Name ="Total Calories Burn"
 
                 },
                 new PieSeries<double> {
-                    Values = new List<double> { TotalEatCalories } ,
+                    Values = new List<double> { TotalBurnCaloriesMonth } ,
+                    Name ="Total Calories Gain"
+                }
+
+               };
+        }
+
+        private void ShowPiChart2(List<Meal> meatData, List<Workout> workoutsData)
+        {
+            double TotalEatCaloriestemp = 0;
+            double TotalBurnCaloriestemp = 0;
+            meatData.ForEach(m =>
+            {
+                TotalEatCaloriestemp = TotalEatCaloriestemp + m.TotalCatories;
+            });
+
+            workoutsData.ForEach(m =>
+            {
+                TotalBurnCaloriestemp = TotalBurnCaloriestemp + m.TotalCalories;
+            });
+
+
+            pieChart1.Series = new List<ISeries>
+             {
+
+                new PieSeries<double> {
+                    Values = new List<double> { TotalBurnCaloriestemp },
+                    Name ="Total Calories Burn"
+
+                },
+                new PieSeries<double> {
+                    Values = new List<double> { TotalEatCaloriestemp } ,
                     Name ="Total Calories Gain"
                 }
 
@@ -206,6 +256,21 @@ namespace FitnessTrackingApplication.Views
         }
 
         private void pieChart1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cartesianChart1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
         {
 
         }

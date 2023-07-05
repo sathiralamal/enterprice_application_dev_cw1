@@ -40,7 +40,7 @@ namespace FitnessTrackingApplication.Views
                 app.Show();
                 app.Activate();
                 this.Visible = false;
-                
+
             }
             else
             {
@@ -58,7 +58,7 @@ namespace FitnessTrackingApplication.Views
 
             this.Visible = false;
             this.Hide();
-            
+
         }
 
         private void LoginView_Load(object sender, EventArgs e)

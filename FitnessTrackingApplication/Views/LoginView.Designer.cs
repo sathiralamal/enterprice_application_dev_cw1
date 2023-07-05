@@ -37,6 +37,8 @@
             createUser = new Button();
             label2 = new Label();
             label3 = new Label();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -44,46 +46,52 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.InactiveCaptionText;
-            label1.Location = new Point(289, 53);
+            label1.Location = new Point(299, 9);
             label1.Name = "label1";
-            label1.Size = new Size(192, 28);
+            label1.Size = new Size(152, 28);
             label1.TabIndex = 0;
-            label1.Text = "Fitness Application";
+            label1.Text = "Fitness Tracker";
             label1.TextAlign = ContentAlignment.TopCenter;
             label1.Click += label1_Click;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(248, 141);
+            textBox1.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox1.Location = new Point(251, 160);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(264, 23);
+            textBox1.Size = new Size(264, 31);
             textBox1.TabIndex = 1;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(248, 186);
+            textBox2.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox2.Location = new Point(253, 212);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(261, 23);
+            textBox2.Size = new Size(261, 31);
             textBox2.TabIndex = 2;
             // 
             // buttonLogin
             // 
-            buttonLogin.Location = new Point(248, 225);
+            buttonLogin.BackColor = Color.DodgerBlue;
+            buttonLogin.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonLogin.Location = new Point(251, 266);
             buttonLogin.Name = "buttonLogin";
-            buttonLogin.Size = new Size(264, 34);
+            buttonLogin.Size = new Size(264, 41);
             buttonLogin.TabIndex = 3;
             buttonLogin.Text = "Login";
-            buttonLogin.UseVisualStyleBackColor = true;
+            buttonLogin.UseVisualStyleBackColor = false;
             buttonLogin.Click += buttonLogin_Click;
             // 
             // buttonCancel
             // 
-            buttonCancel.Location = new Point(248, 265);
+            buttonCancel.BackColor = Color.Tomato;
+            buttonCancel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonCancel.Location = new Point(252, 313);
             buttonCancel.Name = "buttonCancel";
-            buttonCancel.Size = new Size(264, 33);
+            buttonCancel.Size = new Size(264, 37);
             buttonCancel.TabIndex = 4;
             buttonCancel.Text = "Cancel";
-            buttonCancel.UseVisualStyleBackColor = true;
+            buttonCancel.UseVisualStyleBackColor = false;
             buttonCancel.Click += buttonCancel_Click;
             // 
             // messagelable
@@ -96,18 +104,19 @@
             // 
             // createUser
             // 
-            createUser.Location = new Point(308, 346);
+            createUser.BackColor = Color.Gold;
+            createUser.Location = new Point(311, 372);
             createUser.Name = "createUser";
-            createUser.Size = new Size(140, 23);
+            createUser.Size = new Size(140, 32);
             createUser.TabIndex = 6;
             createUser.Text = "Sign In";
-            createUser.UseVisualStyleBackColor = true;
+            createUser.UseVisualStyleBackColor = false;
             createUser.Click += createUser_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(249, 118);
+            label2.Location = new Point(252, 144);
             label2.Name = "label2";
             label2.Size = new Size(65, 15);
             label2.TabIndex = 7;
@@ -116,17 +125,29 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(250, 168);
+            label3.Location = new Point(253, 194);
             label3.Name = "label3";
             label3.Size = new Size(57, 15);
             label3.TabIndex = 8;
             label3.Text = "Password";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.image1;
+            pictureBox1.Location = new Point(320, 40);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(111, 101);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 9;
+            pictureBox1.TabStop = false;
+            // 
             // LoginView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(790, 450);
+            Controls.Add(pictureBox1);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(createUser);
@@ -139,6 +160,7 @@
             Name = "LoginView";
             Text = "LoginView";
             Load += LoginView_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -154,5 +176,6 @@
         private Button createUser;
         private Label label2;
         private Label label3;
+        private PictureBox pictureBox1;
     }
 }
